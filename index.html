@@ -1,12 +1,452 @@
 <!DOCTYPE html>
+
 <head>
     <title>Cover Letter</title>
     <meta charset="EUC-KR">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<style>
+    @font-face {
+        font-family: 'KNUTRUTHTTF';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/KNUTRUTHTTF.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    *,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    div {
+        font-family: 'KNUTRUTHTTF';
+        color: white;
+    }
+
+    *::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        background-color: #282828;
+    }
+
+    /*pc*/
+    @media screen and (min-width : 900px) {
+        .VDU {
+            width: 70%;
+            min-width: 720px;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .nav {
+            width: 100%;
+            height: fit-content;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: linear-gradient(to bottom, #282828 80%, transparent 100%);
+            z-index: 10;
+        }
+
+        .nav_UserName {
+            color: white;
+            position: relative;
+            left: 25px;
+        }
+
+        .nav_Buttons {
+            position: relative;
+            margin-top: -15px;
+            right: 20px;
+            display: flex;
+            justify-content: flex-end;
+            /* border-bottom: 1px solid black; */
+        }
+
+        .nav_Button {
+            margin-left: 2px;
+            margin-right: 2px;
+            padding-top: 3px;
+            padding-bottom: 1.5px;
+
+            --c: #dcdcdc;
+            --b: .1em;
+            --d: 10px;
+            --_s: calc(var(--d) + var(--b));
+
+            color: var(--c);
+            border: solid #0000;
+            border-width: var(--b) var(--b) var(--_s) var(--_s);
+            background:
+                conic-gradient(at left var(--d) bottom var(--d),
+                    #0000 90deg, rgb(255 255 255 /0.3) 0 225deg, rgb(255 255 255 /0.6) 0) border-box,
+                conic-gradient(at left var(--_s) bottom var(--_s),
+                    #0000 90deg, var(--c) 0) 0 100%/calc(100% - var(--b)) calc(100% - var(--b)) border-box;
+            transform: translate(calc(var(--d)/-1), var(--d));
+            clip-path:
+                polygon(var(--d) 0%,
+                    var(--d) 0%,
+                    100% 0%,
+                    100% calc(100% - var(--d)),
+                    100% calc(100% - var(--d)),
+                    var(--d) calc(100% - var(--d)));
+            transition: 0.5s;
+        }
+
+        .nav_Button:hover {
+            transform: translate(0, 0);
+            clip-path:
+                polygon(0% var(--d),
+                    var(--d) 0%,
+                    100% 0%,
+                    100% calc(100% - var(--d)),
+                    calc(100% - var(--d)) 100%,
+                    0% 100%);
+        }
+
+        .VDU_Content {
+            width: 70vw;
+            min-width: 720px;
+            display: block;
+            padding-top: 150px;
+            padding-bottom: 50px;
+            position: relative;
+        }
+
+        #Profile_Head {
+            width: calc(100% - 40px);
+            height: fit-content;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+
+            padding: 20px;
+            background-color: rgba(229, 255, 234, 0.208);
+            box-shadow: 8px 8px 15px 1px rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+        }
+
+        #KIM_Chansol_IMG {
+            width: 300px !important;
+            height: 400px !important;
+            box-shadow: 8px 8px 15px 1px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*중앙정렬~*/
+        }
+
+        .popupClose {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-color: rgba(0, 0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .popup img {
+            max-width: 70%;
+            max-height: 70%;
+        }
+
+        #Profile_Title_Text {
+            height: fit-content;
+            margin-left: 5vw;
+        }
+
+        #Profile_Title_Text h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        span,
+        div,
+        a {
+            color: #ffffffb7;
+        }
+
+        #Analysis {
+            width: 100%;
+        }
+
+        #Analysis_Body {
+            width: 100%;
+        }
+
+        #Analysis_Body p {
+            margin-left: 20px;
+        }
+    }
+
+    /*mobile*/
+    @media screen and (max-width : 899px) {}
+</style>
+<script text="javascript">
+    function showContent(id) {
+        var contents = document.getElementsByClassName('VDU_Content');
+
+        for (var i = 0; i < contents.length; i++) {
+            if ("Content_" + id === contents[i].id) {
+                contents[i].style.display = 'block';
+            } else {
+                contents[i].style.display = 'none';
+            }
+        }
+    }
+
+    window.onload = function () {
+        var buttons = document.getElementsByClassName('nav_Button');
+
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                var id = this.innerText.trim().replace(/\s/g, '_');
+                showContent(id);
+            });
+        }
+
+        showContent("Home");
+    }
+
+
+    function openPopup(imageUrl) {
+        var popup = document.createElement('div');
+        popup.className = 'popup';
+
+        var image = document.createElement('img');
+        image.src = imageUrl;
+        image.alt = '원본 이미지';
+
+        popup.appendChild(image);
+
+        var closeButton = document.createElement('button');
+        closeButton.className = 'popupClose';
+        closeButton.onclick = closePopup;
+        popup.appendChild(closeButton);
+
+        document.body.appendChild(popup);
+    }
+
+    function closePopup() {
+        var popup = document.querySelector('.popup');
+        document.body.removeChild(popup);
+    }
+
+</script>
+
 <body>
-    <p>Hello, Camaguee</p>
+    <div class="nav" id="navbar">
+        <h1 class="nav_UserName" id="navbar_UserName" onclick="showContent(`Home`)">KIM. CHANSOL</h1>
+        <div class="nav_Buttons" id="navbar_Buttons">
+            <h3 class="nav_Button">&nbsp;Home&nbsp;</h3>
+            <h3 class="nav_Button" style="display: none;">&nbsp;Unity&nbsp;</h3>
+            <h3 class="nav_Button">&nbsp;Capstone&nbsp;Design&nbsp;</h3>
+            <h3 class="nav_Button">&nbsp;Conference&nbsp;</h3>
+            <h3 class="nav_Button">&nbsp;Research&nbsp;</h3>
+        </div>
+    </div>
+    <div class="VDU">
+        <div class="VDU_Content" id="Content_Home">
+            <div id="Profile_Head">
+                <img id="KIM_Chansol_IMG"
+                    src="https://github.com/CaMaGuee/coverlett.er/blob/main/K_Chansol.png?raw=true"
+                    style="width: 700px; height: 900px;">
+                <div id="Profile_Title_Text" style="scale: 0.95;">
+                    <h2 style="margin-bottom: 30px;">김찬솔 [ Kim, Chansol ]</h2>
+                    <p>청운대학교 공과대학 멀티미디어학과 - 전공</p>
+                    <p>청운대학교 공과대학 컴퓨터공학과 - 부전공</p>
+                    <p>청운대학교 공과대학 전자과 연구실 [ 장성근 교수 & 강남정보기술 ] - 1년 2개월 연구
+                    <div style="color: #dcdcdc54; margin-top: -10px; font-size: 13px;">[ 온도제어로 사과의 착색율을 80%까지 향상시켜 품질등급을
+                        상향할 수 있는 마이크로셀 커버리지 프로브 장치 개발 및 노지 스마트팜 시스템 개발 ]</div>
+                    </p>
+                    <p>Vcone 웹사이트 개발 [ 영상 컨텐츠 제작 홍보 페이지 ] - <a href="http://vcone.me/index/">Click. ME</a></p>
+                    <p>우수 논문상 수상 - 한국기술이전사업화학회 [김찬솔, 정서현, 김다영, 박시은, 우예은, 이강민, 지윤서, 이채원, 함현지, 차주호, "모바일 교환권 통합 관리를 위한 확률적
+                        예외기반 텍스트 제거 알고리즘의 설계 및 구현", "디지털산업정보학회 학술대회논문지", 2023,]</p>
+                    <p>Capstone Design - 확률적 예외기반 텍스트 제거 알고리즘을 활용한 모바일 교환권 통합관리 시스템</p>
+                    <p>정보처리기사 자격증 취득 - 2023.11.15</p>
+                    <p>SQLD 자격증 취득 - 2023.12.15</p>
+                </div>
+            </div>
+            <br><br><br>
+            <hr>
+            <br>
+            <div id="#Analysis">
+                <h2>SMART 분석</h2>
+                <p>&nbsp;SMART 목표는 정확하고 쉽게 전달하는 방식으로 목표와 KPI를 설정하는 것을 말한다.</p>
+                <p>&nbsp;Robert S. Ruben 교수가 확장한 개념은 SMART는 다음을 나타내는 약어이다.</p>
+                <ul>
+                    <li>
+                        <p>
+                        <div style="width: 7em; display: inline-block;"><strong>S</strong>pecific</div> :
+                        <strong>구체적</strong></p>
+                    </li>
+                    <li>
+                        <p>
+                        <div style="width: 7em; display: inline-block;"><strong>M</strong>easurable</div> : <strong>측정
+                            가능한</strong></p>
+                    </li>
+                    <li>
+                        <p>
+                        <div style="width: 7em; display: inline-block;"><strong>A</strong>chievable</div> : <strong>달성
+                            가능한</strong></p>
+                    </li>
+                    <li>
+                        <p>
+                        <div style="width: 7em; display: inline-block;"><strong>R</strong>ealistic</div> :
+                        <strong>현실적</strong></p>
+                    </li>
+                    <li>
+                        <p>
+                        <div style="width: 7em; display: inline-block;"><strong>T</strong>ime-Bound</div> : <strong>기한이
+                            있는</strong></p>
+                    </li>
+                </ul>
+                <br>
+                <div id="Analysis_Body">
+                    <li>
+                        <h4>Specific - 구체적</h4>
+                    </li>
+                    <p>&nbsp;목표를 구체적으로 즉, 분명히 하는 것은 결승점에 도달하기 위한 단계 중 첫 번째 단계이다. 목표는 너무 넓지 않고 애매하지 않게 설정해야 한다. 필자의 전공인
+                        프로그래밍으로 예를 들면 "프로그램 개발자가 되는 것"은 너무 광범위하고 모호한 목표가 되지만 어떠한 것을 하겠다는 목표가 명확해야 뚜렷한 목표에 더 우선시 할 수 있다.
+                    </p>
+                    <p>&nbsp;본인은 Server-Side 개발자가 되고자 한다. 안정적이고 효율적인 서버를 구축하여 사용자들이 원활하게 서비스를 이용할 수 있도록 하는 것이 목표이다.
+                        사용자들의 요구에 빠르게 대응하고, 시스템의 안정성을 유지하며, 끊임없이 발전하는 효율적인 서버를 개발하고자 한다.</p>
+                    <br>
+                    <li>
+                        <h4>Measurable - 측정 가능한</h4>
+                    </li>
+                    <p>&nbsp;목표와 결승점으로 향하는 과정을 측정할 수 없으면 잘 나아가고 있는지 확인이 모호하며 만약 이상적인지 못한 길일 경우 보다 나은 방향으로 틀기 힘들어진다. 마치
+                        목표로 향한 네비게이션과 같다.</p>
+                    <p>&nbsp;구체적인 목표를 세우는 것에서 멈추지 않고 데이터를 뚜렿이 하고 결승점으로 향한 진척 사항을 명확히 할 수 있어야 한다. 이를 위해서는 필요한 데이터는 어떤
+                        것인지, 어떻게 데이터를 도출 할 것인지, 그 데이터는 충분한지, 목표를 달성하기 가지의 정도를 알 수 있어야 한다.</p>
+                    <p>&nbsp;본인은 `안정적이고 효율적인 서버를 구축하며, 사용자들이 원활하게 서비스를 이요할 수 있도록 하는 Server-Side 개발자`가 되는 것을
+                        구체적(Specific)인 목표로 설정하였다. 모든 직종들과 마찬가지로 사용하는 언어나, 방식, 프로그램들이 회사마다 다르고, 회사의 추구하는 방식과 만들어가는 방법이
+                        다르지만, 광범위한 경험이 있다면 이를 바탕으로 비슷한 문제를 응용하여 보다 빠르고 효율적인 결과물을 만들 수 있다. 그러므로 다양한 프로그래밍 언어와 응용 프로그램에 대한
+                        경험은 물론, 개발자로써의 임무가 끝나는 그 순간까지 계속해서 배우고 다양한 경험을 쌓아야 한다. 학생들을 위해 추진하고 있는 취업 연계 및 국가 근로 사업 등을 통해
+                        다양한 회사에서 실무를 경험하는 것도 중요하다.</p>
+                    <p>&nbsp;본인은 새로운 도전을 하는 것을 좋아하며, 이러한 열정은 다양한 프로젝트에서 보여줄 수 있었다. 개인적으로 외주를 받아 PHP 환경의 웹사이트를 제작한 경험이
+                        있다. 이를 통해 실제 서비스를 위한 웹사이트 개발과 클라이언트의 요구사항을 파악하고 이를 충족시키는 경험을 쌓을 수 있었다.</p>
+                    <p>&nbsp;또한, 약 1년간 한 회사에서 전자공학과 교수님과 함께 진행항 연구에 참여했다. 이 과정에서 PHP, JSP, Node.js 환경의 서버 사이드 작업을 수행하고,
+                        기상 관측을 위한 여러 센서들을 이용한 프로브 장치 제작, 우박 센서 제작 등을 진행하였다. MariaDB에 수집된 정보를 서버단에서 데이터 전처리 과정을 거친 후 차트와
+                        여러 UI를 통해 확인이 가능한 반응형 웹을 제작하였다.</p>
+                    <p>&nbsp;취업 연계 및 국가 근로 사업을 통해 마우스를 반지처럼 손에 끼우고 제스처로 조작하는 IoT 제품과 HexCode로 통신을 하는 데모 어플리케이션을 제작하였다.
+                        이를 통해 IoT 기기와 웹 어플리케이션 간의 통신 방식을 이해하고, 실제로 제작해볼 수 있었다.</p>
+                    <p>&nbsp;캡스톤 디자인 과제로 `확률적 예외기반 텍스트 제거 알고리즘`을 구상하고 PHP 환경에서 Oauth 로그인과 OCR 기술, 구상한 알고리즘, MySQL을 사용하여
+                        사용자가 업로드한 모바일 교환권 이미지를 관리하는 통합 관리 서비스를 제작하였다. 또한 반응형 웹 페이지를 제작하고 도메인과 호스팅 서버를 대여하여 직접 호스팅하는 경험도
+                        가졌다.</p>
+                    <p>&nbsp;마지막으로, 직접 구상한 `확률적 예외기반 텍스트 제거 알고리즘`을 논문으로 작성하여 학술대회에 투고하였고, 이 논문으로 우수논문상을 수상하였다. 이런 경험들을
+                        통해 Server-Side 개발자로서 필요한 다양한 역량을 키워나가고 있다.</p>
+                    <p>&nbsp;또한, 이러한 실무 경험 외에도 자격증을 통해 전문성을 증명하고자 노력했다. 정보처리기사와 SQLD(SQL 개발자) 자격증을 취득하였다.</p>
+                    <p>&nbsp;정보처리기사 자격증을 통해 컴퓨터 시스템의 이해와 소프트웨어 개발 능력을 입증하였고, SQLD 자격증을 통해 데이터베이스 설계와 쿼리 최적화 등의 능력을
+                        입증하였다. 이러한 자격증은 본인이 서버 사이드 개발에 필요한 기본적인 역량을 갖추고 있음을 보여주는 객관적인 지표가 될 것이다.</p>
+                    <p>&nbsp;이렇게 습득한 전문 지식과 실무 경험, 그리고 자격증을 바탕으로 안정적이고 효율적인 서버를 구축하고, 사용자들이 원활하게 서비스를 이용할 수 있도록 하는 서버
+                        사이드 개발자가 되는 것이 본인의 목표이다.</p>
+                    <br>
+                    <li>
+                        <h4>Achievable - 달성 가능한</h4>
+                    </li>
+                    <p>&nbsp;목표는 과도하게 높지 않고, 현실적으로 도달할 수 있는 수준이어야 한다. 그렇지 않으면 목표를 향한 동기를 잃게 될 수 있다. 본인의 목표는 안정적이고 효율적인
+                        서버를 구축하고, 사용자들이 원활하게 서비스를 이용할 수 있도록 하는 서버 사이드 개발자가 되는 것이다.</p>
+                    <p>&nbsp;이러한 목표를 달성하기 위하여 본인은 지금까지 다양한 프로젝트를 통해 서버 사이드 개발에 필요한 실무 경험을 쌓아왔다. 개인 프로젝트를 통해 PHP 환경의
+                        웹사이트를 제작하였고, 연구 참여를 통해 다양한 서버단 작업을 수행하였다. 또한, 캡스톤 디자인 과제를 통해 직접 구상한 알고리즘을 적용한 서비스를 제작하였고, 이를
+                        논문으로 작성하여 우수논문상을 수상하였다.</p>
+                    <p>&nbsp;그리고 이러한 실무 경험 외에도 정보처리기사와 SQLD(SQL 개발자) 등의 자격증을 취득하여 자신의 전문성을 객관적으로 입증하였다. 이러한 다양한 경험과 자격증은
+                        본인이 설정한 목표가 현실적으로 달성 가능하다는 것을 보여준다.</p>
+                    <p>&nbsp;따라서, 본인의 목표는 현실적으로 달성 가능하며, 이를 위해 필요한 역량과 경험을 갖추고 있다. 이를 바탕으로 계속해서 노력하고 발전하여 목표를 이루어 나갈
+                        것이다.</p>
+                    <br>
+                    <li>
+                        <h4>Realistic, Relevant - 현실적이고 관련된</h4>
+                    </li>
+                    <p>&nbsp;목표는 본인의 능력, 자원, 현실적인 제약 등을 고려하여 세우는 것이 중요하다. 또한, 현재의 상황과 미래의 방향성을 고려한 것이어야 한다. 본인의 목표는
+                        안정적이고 효율적인 서버를 구축하고, 사용자들이 원활하게 서비스를 이용할 수 있도록 하는 서버 사이드 개발자가 되는 것이다.</p>
+                    <p>&nbsp;이 목표는 본인의 이전 경험과 지식, 그리고 자격증 등을 바탕으로 현실적으로 달성 가능하다. 다양한 프로젝트를 통해 서버 사이드 개발에 필요한 실무 경험을
+                        쌓아왔고, 정보처리기사와 SQLD(SQL 개발자) 등의 자격증을 취득하여 전문성을 입증하였다.</p>
+                    <p>&nbsp;그리고 이 목표는 IT 업계의 트렌드와 미래의 방향성을 고려한 것이다. 디지털화가 가속화되고 있는 현대 사회에서, 안정적이고 효율적인 서버 구축 능력은 매우
+                        중요하다. 이런 흐름을 고려하면 본인의 목표는 현실적이고, 또한 시장의 요구와 맞닿아 있는 것이다.</p>
+                    <p>&nbsp;따라서, 본인의 목표는 현실적으로 달성 가능하며, IT 업계의 트렌드와 미래의 방향성을 고려한 것이다. 이를 바탕으로 계속해서 노력하고 발전하여 목표를 이루어 나갈
+                        것이다.</p>
+                    <br>
+                    <li>
+                        <h4>Time-Bound - 기한이 있는</h4>
+                    </li>
+                    <p>&nbsp;목표는 특정한 시간 안에 달성할 수 있도록 기한을 정하는 것이 중요하다. 이를 통해 목표를 향한 집중력을 높이고, 성취감을 느낄 수 있다. 본인의 목표는 안정적이고
+                        효율적인 서버를 구축하고, 사용자들이 원활하게 서비스를 이용할 수 있도록 하는 서버 사이드 개발자가 되는 것이다.</p>
+                    <p>&nbsp;이 목표를 달성하기 위해 본인은 지금까지 다양한 프로젝트를 통해 필요한 경험과 지식을 쌓아왔다. 그리고 이러한 노력을 통해 본인은 현재 이 목표를 달성하기 위한
+                        충분한 역량을 갖추고 있다. 따라서, 본인은 2년 이내에 이 목표를 달성할 것이다.</p>
+                    <p>&nbsp;2년이라는 기간 동안 본인은 지금까지 쌓아온 경험과 지식을 바탕으로 서버 사이드 개발에 더욱 집중할 것이다. 그리고 이 기간 동안 필요한 추가적인 지식과 기술을
+                        배우고, 실무 경험을 더욱 쌓아 나갈 것이다.</p>
+                    <p>&nbsp;따라서, 본인의 목표는 현실적이고, 관련성이 있으며, 그리고 시간 제한이 있는 것이다. 이를 바탕으로 계속해서 노력하고 발전하여 목표를 이루어 나갈 것이다.</p>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+        <div class="VDU_Content" id="Content_Unity" style="display: none;">
+            i'm Unity
+        </div>
+        <div class="VDU_Content" id="Content_Capstone_Design">
+
+        </div>
+        <div class="VDU_Content" id="Content_Conference">
+            <div id="Profile_Head">
+                <img id="KIM_Chansol_IMG"
+                    src="https://github.com/CaMaGuee/coverlett.er/blob/main/Conference.png?raw=true"
+                    style="width: 700px; height: 900px;" onclick="openPopup(this.src)">
+                
+                <div id="Profile_Title_Text" style="scale: 0.95;">
+                    <h2 style="margin-bottom: 30px;">우수 논문상 수상</h2>
+                    <p>제목 : 모바일 교환권 통합 관리를 위한 확률적 예외기반 텍스트 제거 알고리즘의 설계 및 구현<br><br>본 학술논문은 한국기술이전사업화학회가 주최하는 2023년 추계공동학술대회에서 우수논문으로 선정되었기에 이 상을 드립니다.<br>2023년 11월 25일<br><br>사단법인 한국기술이전사업화학회<br>회장 박종순</p>
+                </div>
+            </div>
+            <br><br><br>
+            <hr>
+            <br>
+            <iframe id="ConferenceContent_Document" src="https://drive.google.com/file/d/1IfPBCzpqQuVzkvLZilx2g1M1sh-VM28U/preview" width="80%" height="650" style="padding-left: 10%; border: none;"></iframe>
+            <iframe id="ConferenceContent_Presentation" src="https://drive.google.com/file/d/1EW5rxSBm9NlXqajrLdI9Hs7w0zErm_xe/preview" width="80%" height="650" style="padding-left: 10%; border: none;"></iframe>
+            <iframe id="ConferenceContent_Similarity_Check" src="https://drive.google.com/file/d/1ZCt_sqk3MJvNoxgl3rGYg7sXI2yyAZBV/preview" width="80%" height="650" style="padding-left: 10%; border: none;"></iframe>
+        </div>
+        <div class="VDU_Content" id="Content_Research">
+            i'm Research
+        </div>
+    </div>
 </body>
+
 </html>
+
